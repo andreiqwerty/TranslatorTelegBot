@@ -12,7 +12,7 @@ public class HelpCommand implements Command {
     public void execute(User user, String argument, SendMessage response) {
         StringBuilder resp = new StringBuilder();
 
-        resp.append("<b>").append("Доступные команды для пользователя").append(":</b>\n");
+        resp.append("<b>").append("Available commands").append(":</b>\n");
         for (CommandType type : CommandType.values()) {
             String command = type.toString().toLowerCase();
             if (command.equalsIgnoreCase("stat")) continue;

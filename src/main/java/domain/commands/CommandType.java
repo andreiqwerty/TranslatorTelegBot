@@ -1,10 +1,10 @@
 package domain.commands;
 
 public enum CommandType {
-    START("Начни использовать бота!"),
-    HELP("Узнать полный список команд"),
-    LANGINFO("Узнать установки языка"),
-    SWAPLANG("Поменять язык перевода");
+    START("Start now!"),
+    HELP("List of commands"),
+    LANGINFO("Get lang settings"),
+    SWAPLANG("Change the lang");
 
     public String getDescription() {
         return description;

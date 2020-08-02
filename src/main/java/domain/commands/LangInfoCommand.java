@@ -20,9 +20,9 @@ public class LangInfoCommand implements Command {
         }
         BotUser currentUser = botUserService.findUser(user.getId());
         StringBuilder resp = new StringBuilder();
-        resp.append("Текущий язык").append(" ")
+        resp.append("Source lang").append(" ")
             .append(currentUser.getLanguageCode()).append("\n")
-            .append("Целевой язык").append(" ")
+            .append("Target lang").append(" ")
             .append(currentUser.getTranslationLang());
         response.setText(resp.toString());
     }
