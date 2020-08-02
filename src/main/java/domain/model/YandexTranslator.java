@@ -1,8 +1,6 @@
 package domain.model;
 
 import com.google.gson.Gson;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.DataOutputStream;
@@ -15,7 +13,6 @@ import java.util.Properties;
 import java.util.Scanner;
 
 public class YandexTranslator implements Translator {
-    private static final Logger logger = LoggerFactory.getLogger(YandexTranslator.class);
     private String url;
     private String key;
     private static Translator translator;
@@ -27,14 +24,12 @@ public class YandexTranslator implements Translator {
     public static Translator getInstance() {
         if (translator == null) {
             translator = new YandexTranslator();
-            logger.info("Translator instance created and can help you ");
         }
         return translator;
     }
 
     @Override
     public String translate(String message, String lang) throws IOException {
-        logger.debug("Starting translating text: {}. Translation lang: {}", message, lang);
         URL urlObj = new URL(url + "translate?key=" + key);
         HttpsURLConnection connection = (HttpsURLConnection) urlObj.openConnection();
         connection.setRequestMethod("POST");
@@ -46,7 +41,6 @@ public class YandexTranslator implements Translator {
         String text = getTextFromJson(json);
         out.close();
         response.close();
-        logger.debug("Text successfully translated. Translated text: {}", text);
         return text;
     }
 
@@ -63,8 +57,7 @@ public class YandexTranslator implements Translator {
             url = prop.getProperty("url");
             key = prop.getProperty("key");
         } catch (IOException e) {
-            logger.error("An error occurred while loading translator properties", e);
+            e.printStackTrace();
         }
-        logger.info("Translator properties set successfully");
     }
 }

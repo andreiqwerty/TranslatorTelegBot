@@ -2,8 +2,6 @@ package domain.model;
 
 import domain.handlers.Handler;
 import domain.handlers.MessageHandler;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -17,7 +15,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class TranslatorBot extends TelegramLongPollingBot {
-    private static final Logger logger = LoggerFactory.getLogger(TranslatorBot.class);
     private String username;
     private String token;
     private static TranslatorBot translatorBot;
@@ -30,7 +27,6 @@ public class TranslatorBot extends TelegramLongPollingBot {
     public static TranslatorBot getInstance() {
         if (translatorBot == null) {
             translatorBot = new TranslatorBot();
-            logger.info("Bot instance created");
         }
         return translatorBot;
     }
@@ -47,13 +43,11 @@ public class TranslatorBot extends TelegramLongPollingBot {
     }
 
     private void sendMessage(SendMessage message) {
-        logger.trace("Sending message {}", message);
         try {
             execute(message);
         } catch (TelegramApiException e) {
-            logger.error("Problems with message sending", e);
+            e.printStackTrace();
         }
-        logger.trace("The message was successfully sent!");
     }
 
     @Override
@@ -74,8 +68,7 @@ public class TranslatorBot extends TelegramLongPollingBot {
             username = prop.getProperty("username");
             token = prop.getProperty("token");
         } catch (IOException e) {
-            logger.error("An error occurred while loading properties", e);
+            e.printStackTrace();
         }
-        logger.info("Bot properties set successfully");
     }
 }

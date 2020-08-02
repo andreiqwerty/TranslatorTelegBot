@@ -1,8 +1,6 @@
 package dao;
 
 import domain.model.BotUser;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.HashMap;
