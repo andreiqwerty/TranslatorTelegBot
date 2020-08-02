@@ -24,7 +24,7 @@ public class StartCommand implements Command {
         resp.append("Привет")
                 .append(botUser.getFirstName())
                 .append((botUser.getLastName() != null ? botUser.getLastName() : "\b") + "!")
-                .append("R2-D2 готов служить и бороться с империей");
+                .append("R2-D2 готов служить и бороться с империей и его блестящий друг");
         response.setText(resp.toString());
     }
 
