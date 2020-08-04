@@ -17,6 +17,10 @@ public class TextHandler implements Handler {
         translator = YandexTranslator.getInstance();
     }
 
+    public TextHandler(Translator translator){
+        this.translator = translator;
+    }
+
     @Override
     public void handle(Update update, SendMessage response) {
         long chatId = update.getMessage().getChatId();
@@ -35,7 +39,7 @@ public class TextHandler implements Handler {
 
     }
 
-    private String getTranslationLang(Update update) {
+    public String getTranslationLang(Update update) {
         BotUser botUser = userService.findUser(update.getMessage().getFrom().getId());
         return botUser.getTranslationLang();
     }

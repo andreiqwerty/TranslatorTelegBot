@@ -51,7 +51,7 @@ public class YandexTranslator implements Translator {
     }
 
     private void setProperties() {
-        try (InputStream in = new FileInputStream("src/main/resources/translator.properties")) {
+        try (InputStream in = getClass().getClassLoader().getResourceAsStream("translator.properties")) {
             Properties prop = new Properties();
             prop.load(in);
             url = prop.getProperty("url");

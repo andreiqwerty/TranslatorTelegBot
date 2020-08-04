@@ -62,7 +62,7 @@ public class TranslatorBot extends TelegramLongPollingBot {
 
 
     private void setProperties() {
-        try (InputStream in = new FileInputStream("src/main/resources/botinfo.properties")) {
+        try (InputStream in = getClass().getClassLoader().getResourceAsStream("botinfo.properties")) {
             Properties prop = new Properties();
             prop.load(in);
             username = prop.getProperty("username");
