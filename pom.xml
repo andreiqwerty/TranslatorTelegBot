@@ -51,7 +51,8 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin><groupId>org.apache.maven.plugins</groupId>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <executions>
                     <execution>
@@ -70,7 +71,7 @@
         <dependency>
             <groupId>org.telegram</groupId>
             <artifactId>telegrambots</artifactId>
-            <version>4.6</version>
+            <version>4.9.1</version>
         </dependency>
 
         <dependency>

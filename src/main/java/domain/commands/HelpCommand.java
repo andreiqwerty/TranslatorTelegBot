@@ -10,15 +10,18 @@ public class HelpCommand implements Command {
 
     @Override
     public void execute(User user, String argument, SendMessage response) {
-        StringBuilder resp = new StringBuilder();
+        response.setText(buildResponse());
+    }
 
+    public String buildResponse(){
+        StringBuilder resp = new StringBuilder();
         resp.append("<b>").append("Available commands").append(":</b>\n");
         for (CommandType type : CommandType.values()) {
             String command = type.toString().toLowerCase();
             if (command.equalsIgnoreCase("stat")) continue;
             resp.append(String.format("/%s - %s%n", command, type.getDescription()));
         }
-        response.setText(resp.toString());
+        return resp.toString();
     }
 
     @Override
