@@ -9,8 +9,5 @@
         <module name="TranslatorBot" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="TranslatorBot" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>

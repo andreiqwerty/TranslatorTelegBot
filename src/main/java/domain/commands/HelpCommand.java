@@ -15,7 +15,7 @@ public class HelpCommand implements Command {
 
     public String buildResponse(){
         StringBuilder resp = new StringBuilder();
-        resp.append("<b>").append("Available commands").append(":</b>\n");
+        resp.append("<b>").append("Available commands for users").append(":</b>\n");
         for (CommandType type : CommandType.values()) {
             String command = type.toString().toLowerCase();
             if (command.equalsIgnoreCase("stat")) continue;
